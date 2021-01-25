@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="text-center" style="margin-bottom: 20px;">
+    <div>
+      {{ kiosk?.name }} - {{ cash ? cash.cash_drawer?.name + ' aberto' : 'Nenhum caixa aberto' }}
+    </div>
+    <p *ngIf="!cash" style="color: red">*Para receber em dinheiro abra um caixa</p>
+  </div>
+
+
+  <h2 *ngIf="!kiosk">Para começar você deve cadastrar pelo menos um <a href="kiosk">Quiosque</a></h2>
+
+  <h2 *ngIf="periods === []">Para começar você deve cadastrar pelo menos um <a href="period">Período</a> para o quiosque
+    "{{ kiosk.name }}"
+  </h2>
+  <div class="row text-center">
+    <span id="rental-tip"></span>
+  </div>
+  <app-customer-search [kioskId]="kiosk?.id"></app-customer-search>
+  <app-card-panel *ngIf="kiosk?.id && periods !== []" id="rentals-toys" class="row form-group" [kiosk]="kiosk"
+    [cash]="cash">
+  </app-card-panel>
+</div>

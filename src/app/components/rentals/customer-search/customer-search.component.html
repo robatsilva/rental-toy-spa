@@ -1,0 +1,12 @@
+<app-key (onDigitClick)="digitClick($event)"> </app-key>
+<div class="row">
+  <div class="form-group col-xs-6 col-md-3">
+    <input [textMask]="{mask: mask}" [ngModel]="customer.cpf"
+      [ngClass]="{'is-invalid': !validateCpf(customer.cpf) && customer.cpf}" (ngModelChange)="onCpfChange($event)"
+      class="form-control clear" id="cpf" placeholder="CPF" required>
+  </div>
+  <div class="form-group col-xs-6 col-md-3">
+    <input class="form-control clear" [ngModel]="customer.name" (ngModelChange)="onNameChange($event)" id="name"
+      #inputName placeholder="Nome" [disabled]="isNameDisable()">
+  </div>
+</div>

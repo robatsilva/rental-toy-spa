@@ -1,0 +1,58 @@
+<div class="card-toy-container">
+  <span *ngIf="toy.rental != null" class="btn-close"></span>
+  <div class="card-toy"
+    [ngStyle]="(toy.rental && toy.rental.period.time < toy.rental.timeDiff) && { 'background-color': '#ffa1a1' }">
+    <div class="toy-data">
+
+      <img [hidden]="!imgLoaded" *ngIf="!imgError" alt="imagem do brinquedo"
+        src="{{ toy.image ? '/images/toys-img/' + toy.image : '/images/imagem_indisponivel.png' }}"
+        class="rounded mx-auto d-block toy-img toy-img-real" (dblclick)="saveRental()" (load)="imgOnLoad()"
+        (error)="imgOnError()" />
+
+      <img *ngIf="!imgLoaded || imgError" alt="Imagem indisponível" id="toy-img-default-{{ toy.id }}"
+        src="/assets/images/imagem_indisponivel.png" (dblclick)="saveRental()"
+        class="rounded mx-auto d-block toy-img toy-img-default" />
+
+      <div class="text-center toy-description">{{ toy.description }}</div>
+      <div *ngIf="toy.rental">
+        <div class="btn-customer text-center"><b>{{ toy.rental.customer.name }}</b></div>
+        <div class="row">
+
+          <div class="btn-period col-6 toy-row">
+            <div class="col-12"><b>Período</b></div>
+            <div class="col-12"> {{ toy.rental.period.time }} min</div>
+          </div>
+          <div *ngIf="!showInitEnd" class="btn-time col-6 toy-row">
+            <div class="col-12 toy-end"><b>Retorno</b></div>
+            <div class="col-12 toy-end">{{ toy.rental.end }}</div>
+          </div>
+          <div *ngIf="showInitEnd" class="btn-time col-6 toy-row">
+            <div class="col-12 toy-init"><b>Inicio</b></div>
+            <div class="col-12 toy-init"> {{ toy.rental.init }} </div>
+          </div>
+          <div class="btn-extra-time col-6 toy-row">
+            <div class="col-12"><b>Tempo</b></div>
+            <div class="col-12"> {{ toy.rental.timeDiff }} +
+              <span>{{ toy.rental.extraTime }}</span>
+            </div>
+          </div>
+          <div class="btn-value col-6 toy-row">
+            <div class="col-12"><b>Valor</b></div>
+            <div class="col-12">
+              {{ toy.rental.valueToPay }}
+            </div>
+          </div>
+          <div class="toy-pays text-center">
+            <button class="btn btn-primary btn-pay">CD</button>
+            <button class="btn btn-primary btn-pay">CC</button>
+            <button class="btn btn-primary btn-pay">DI</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="toy-bottom text-center btn-status {{ toy.rental ? toy.rental.status : 'Disponivel' }}">
+      <b>{{ toy.rental ? toy.rental.status : "Disponível" }}</b>
+    </div>
+  </div>
+</div>

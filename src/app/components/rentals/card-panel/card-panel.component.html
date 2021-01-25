@@ -1,0 +1,4 @@
+<h2 *ngIf="toys.lenght === 0">Para começar você deve cadastrar pelo menos um
+  <a href="toy">Brinquedo</a> para o quiosque "{{ kiosk.name }}"</h2>
+
+<app-card-toy class="col-md-2 col-sm-3 col-6" *ngFor="let toy of toys" [kiosk]="kiosk" [toy]="toy"></app-card-toy>

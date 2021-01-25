@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Branding Image -->
+        <!-- <span><img width="96px" src="/images/logo.jpeg"></img></span> -->
+        <a href="#" class="navbar-brand">
+            <span><img style="max-width:84px; margin-top: -9px;" src="/assets/images/logo.jpeg"></span>
+        </a>
+        <!-- Collapsed Hamburger -->
+
+        <button *ngIf="user" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#app-navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div *ngIf="user" class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Authentication Links -->
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="#" class="nav-link">Cadastros</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Tutorial</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        Relatórios<span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#" class="dropdown-item">Caixa</a>
+                        <a href="#" class="dropdown-item">Aluguéis</a>
+                        <a href="#" class="dropdown-item">Funcionários</a>
+                        <a href="#" class="dropdown-item">Brinquedos</a>
+                        <a href="#" class="dropdown-item">Forma de pagamento</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownUsuario" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        {{ user.name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownUsuario">
+                        <a href="#" class="dropdown-item"><i class="fa fa-btn fa-key"></i>Trocar senha</a>
+                        <a href="#" class="dropdown-item"><i class="fa fa-btn fa-sign-out"></i>Sair</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Right Side Of Navbar -->
+        <!-- <ul *ngIf="!user" class="navbar-nav navbar-right">
+            <li><a href="#"href="{{ url('/register') }}">Registro</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+        </ul> -->
+    </div>
+</nav>

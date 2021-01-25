@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div formGroupName="user">
+                            <div class='form-group'>
+                                <label for="email">E-Mail</label>
+                                <input id="email" type="email" [ngClass]="{ 'is-invalid' : getFieldError('user.email')}"
+                                    class="form-control" formControlName="email" placeholder="exemplo@email.com.br">
+                                <span *ngIf="getFieldError('user.email')" class="invalid-feedback">
+                                    <strong>E-mail inválido</strong>
+                                </span>
+                            </div>
+
+                            <div class='form-group'>
+                                <label for="password">Senha</label>
+                                <input id="password" type="password"
+                                    [ngClass]="{ 'is-invalid' : getFieldError('user.password') }" class="form-control"
+                                    formControlName="password" name="password">
+                                <span *ngIf="getFieldError('user.password')" class="invalid-feedback">
+                                    <strong>{{ error.messagePassword }}</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember"> Lembrar-me
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-btn fa-sign-in"></i> Login
+                            </button>
+                            <a class="btn btn-link" href="#">Esqueceu sua senha?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
